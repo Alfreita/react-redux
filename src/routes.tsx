@@ -1,25 +1,19 @@
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DefaultRedux from "./pages/defaultRedux/DefaultRedux";
-const Teste = () => {
-  return <>ola</>;
-};
-const Teste2 = () => {
-  return <>ola</>;
-};
+import { ReactRedux } from "./pages/reactRedux/reactRedux";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<DefaultRedux />}>
-      <Route path="hello" element={<Teste />} />
-      <Route path="hello2" element={<Teste2 />} />
-    </Route>
-  )
-);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <DefaultRedux />,
+    errorElement: <h1>Page not found</h1>,
+  },
+  {
+    path: "/redux",
+    element: <ReactRedux />,
+    errorElement: <h1>Page not found</h1>,
+  },
+]);
 
 const AppRouterProvider = () => {
   return <RouterProvider router={router} />;
